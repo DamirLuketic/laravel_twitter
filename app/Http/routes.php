@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+// auth - routes
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
+
+// basic routes -> without middleware
+
+Route::get('/', 'BasicController@index');
+
+Route::get('/posts', 'BasicController@index');
+
+Route::resource('/', 'BasicController@index');
