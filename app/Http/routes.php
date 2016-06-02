@@ -34,9 +34,12 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/posts', 'PostController');
 
+Route::resource('/follows', 'FollowController');
+
 Route::get('/my_posts', ['as' => 'my_posts', 'uses' => 'UserController@my_posts']);
 
 Route::get('/follows_posts', ['as' => 'follows_posts', 'uses' => 'UserController@follows_posts']);
+
 
 
 //Route::group(['middleware' => 'auth'], function()

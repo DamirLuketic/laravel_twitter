@@ -16,6 +16,8 @@
 
         @if($users)
             @foreach($users as $user)
+                @if(Auth::user()->id != $user->id)
+
 
         <tr>
             <td>{{$user->id}}</td>
@@ -25,7 +27,7 @@
         </tr>
 
 
-
+                @endif
             @endforeach
         @endif
 

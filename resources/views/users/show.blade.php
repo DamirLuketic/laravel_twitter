@@ -38,26 +38,27 @@
                     <td>
                         @if($follow)
 
-                                {!! Form::open(['method'=>'POST', 'action' => 'FollowController@store']) !!}
+                                {!! Form::open(['method'=>'DELETE', 'action' => ['FollowController@destroy', $user->id]]) !!}
 
                                     <div class="form-group">
-                                        {!! Form::submit('Create Post', ['class' => 'btn btn-primary']) !!}
+                                        {!! Form::submit('Un-follow', ['class' => 'btn btn-primary']) !!}
                                     </div>
 
                                     {!! Form::close() !!}
 
                             @else
 
-                        not
+                                {!! Form::open(['method'=>'post', 'action' => 'FollowController@store']) !!}
+
+                                <input type="hidden" name="follow_id" value="{{$user->id}}">
+
+                                <div class="form-group">
+                                    {!! Form::submit('Follow', ['class' => 'btn btn-primary']) !!}
+                                </div>
+
+                                {!! Form::close() !!}
 
                             @endif
-
-
-
-
-
-
-
 
                     </td>
                 </tr>
