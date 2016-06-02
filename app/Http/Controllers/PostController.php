@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class BasicController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,7 @@ class BasicController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(7);
+        $posts = Post::latest()->paginate(7);
 
         return view('posts.index', compact('posts'));
     }
@@ -29,7 +31,7 @@ class BasicController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -40,7 +42,15 @@ class BasicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $input['user_id'] = Auth::user()->id;
+
+        Post::create($input);
+
+        session()->flash('post_create', 'Post is created');
+
+        return redirect('/posts');
     }
 
     /**
@@ -51,7 +61,9 @@ class BasicController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -62,7 +74,9 @@ class BasicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -74,7 +88,11 @@ class BasicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Post::findOrFail($id)->update($request->all());
+
+        session()->flash('post_updated', 'Post has been updated');
+
+        return redirect()->back();
     }
 
     /**
@@ -85,6 +103,10 @@ class BasicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        session()->flash('post_deleted', 'Post has been deleted');
+
+        return redirect()->route('my_posts');
     }
 }

@@ -40,7 +40,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('index')}}">Home</a>
+            <a class="navbar-brand" href="{{route('posts.index')}}">Home</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -61,11 +61,11 @@
         @endif
         @else
         <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->nickname }} <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Welcome {{ auth()->user()->display_name ? auth()->user()->display_name : auth()->user()->nickname }}</a>
 
         <li><a href="{{ url('/logout') }}">Logout</a></li>
 
-        <li><a href="{{ url('/admin/profile') }}/{{auth()->user()->id}}">Profile</a></li>
+        <li><a href="{{route('users.edit', auth()->user()->slug)}}">Profile</a></li>
 
         </li>
         @endif
@@ -79,17 +79,17 @@
                 <ul class="nav" id="side-menu">
 
 
-                    <li> <a href="/users">All Users</a> </li>
+                    <li> <a href="{{route('users.index')}}">All Users</a> </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Create post</a>
+                        <a href="{{route('posts.create')}}"><i class="fa fa-wrench fa-fw"></i> Create post</a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/posts">My Posts</a>
+                                <a href="{{route('my_posts')}}">My Posts</a>
                             </li>
 
                             <li>
-                                <a href="/posts/create">Follow Post</a>
+                                <a href="{{route('follows_posts')}}">Follows Posts</a>
                             </li>
 
                         </ul>

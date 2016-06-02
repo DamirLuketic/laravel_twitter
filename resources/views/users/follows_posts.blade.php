@@ -1,30 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Posts')
+@section('title', 'Follows Posts')
 
 @section('content')
 
-
-    @if(Session::has('post_create'))
-
-        <p class="bg-danger">{{session('post_create')}}</p>
-
-    @endif
-
-    @if(session('account_deleted'))
-
-        <p class="bg-danger">{{session('account_deleted')}}</p>
-
-    @endif
-
-    {{--@if(Session::has('post_updated'))--}}
-
-        {{--<p class="bg-danger">{{session('post_updated')}}</p>--}}
-
-    {{--@endif--}}
-
-
-    <h1>Posts</h1>
+    <h1>Follows Posts</h1>
 
     <table class="table">
         <thead>
