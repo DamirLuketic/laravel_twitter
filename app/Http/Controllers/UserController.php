@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Image;
 use App\Post;
+use Illuminate\Support\Facades\Input;
 
 
 class UserController extends Controller
@@ -22,9 +23,19 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::paginate(7);
 
-        return view('users.index', compact('a_user', 'users'));
+        return view('users.index', compact('users'));
+    }
+
+    public function search_user(Request $request)
+    {
+        $query = $request->search;
+
+        $users = User::where('nickname', 'LIKE', '%' . $query . '%')->orWhere('display_name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('users.index', compact('users', 'query'));
     }
 
     /**
@@ -244,4 +255,7 @@ class UserController extends Controller
 
         return view('users.follows_posts', compact('posts'));
     }
+
+
+
 }

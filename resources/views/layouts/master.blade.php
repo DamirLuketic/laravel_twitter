@@ -31,6 +31,8 @@
 
 <div id="wrapper">
 
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -78,7 +80,6 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
 
-
                     <li> <a href="{{route('users.index')}}">All Users</a> </li>
 
                     <li>
@@ -90,6 +91,10 @@
 
                             <li>
                                 <a href="{{route('follows_posts')}}">Follows Posts</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('mail')}}">Contact</a>
                             </li>
 
                         </ul>

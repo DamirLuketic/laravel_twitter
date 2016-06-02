@@ -17,11 +17,11 @@
 
     @endif
 
-    {{--@if(Session::has('post_updated'))--}}
+    @if(session('mail_send'))
 
-        {{--<p class="bg-danger">{{session('post_updated')}}</p>--}}
+        <p class="bg-danger">{{session('mail_send')}}</p>
 
-    {{--@endif--}}
+    @endif
 
 
     <h1>Posts</h1>
