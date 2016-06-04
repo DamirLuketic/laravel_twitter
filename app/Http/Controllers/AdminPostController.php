@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminPostRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -74,7 +75,7 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminPostRequest $request, $id)
     {
         Post::findOrFail($id)->update($request->all());
 

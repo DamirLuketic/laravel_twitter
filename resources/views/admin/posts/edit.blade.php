@@ -87,10 +87,11 @@
 
     </div>
 
-    {{--<div class="row">--}}
+    <br />
+    <div class="row">
 
-        {{--@include('includes.form_error')--}}
+        @include('includes.form_error')
 
-    {{--</div>--}}
+    </div>
 
 @endsection
