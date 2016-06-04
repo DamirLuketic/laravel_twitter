@@ -21,15 +21,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
 
-        $users = User::paginate(7);
-
-        return view('users.index', compact('users'));
-    }
-
-    public function search_user(Request $request)
+    public function index(Request $request)
     {
         $query = $request->search;
 
@@ -118,7 +111,6 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-
         // If new image is set -> delete old image, upload new image, and set path
 
         $input_img = array();
@@ -126,8 +118,8 @@ class UserController extends Controller
         if($profile_image = $request->file('profile_image'))
         {
                     // because I was create accessor in image model a use also second check in next if
-            // -> if column value is not set, because accessor colum will have value of path part
-            if(isset($user->image->profile_image) && $user->image->profile_image != "/laravel_twitter/public/profile_image/")
+            // -> if column value is not set, because accessor column will have value of path part
+            if(isset($user->image->profile_image) && $user->image->profile_image != '/laravel_twitter/public/profile_image/')
             {
                 unlink(public_path() . '/../..' . $user->image->profile_image);
             }
@@ -145,7 +137,7 @@ class UserController extends Controller
         if($cover_image = $request->file('cover_image'))
         {
 
-            if(isset($user->image->cover_image) && $user->image->cover_image != "/laravel_twitter/public/cover_image/")
+            if(isset($user->image->cover_image) && $user->image->cover_image != '/laravel_twitter/public/cover_image/')
             {
                 unlink(public_path() . '/../..' . $user->image->cover_image);
             }
@@ -160,7 +152,7 @@ class UserController extends Controller
 
         // update or create path
 
-        if($input_img)
+        if($input_img && !empty($input_img))
         {
             if($user->image)
             {
@@ -210,11 +202,11 @@ class UserController extends Controller
         if(isset($user->image))
         {
 
-            if (isset($user->image->profile_image) && $user->image->profile_image != "/laravel_twitter/public/profile_image/") {
+            if (isset($user->image->profile_image) && $user->image->profile_image != '/laravel_twitter/public/profile_image/') {
                 unlink(public_path() . '/../..' . $user->image->profile_image);
             }
 
-            if (isset($user->image->cover_image) && $user->image->cover_image != "/laravel_twitter/public/cover_image/") {
+            if (isset($user->image->cover_image) && $user->image->cover_image != '/laravel_twitter/public/cover_image/') {
                 unlink(public_path() . '/../..' . $user->image->cover_image);
             }
 

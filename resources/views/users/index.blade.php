@@ -6,24 +6,13 @@
 
 <h1>Users</h1>
 
-{{--{!! Form::open(array('route' => 'queries.search’, 'class'=>'form navbar-form navbar-right searchform')) !!}--}}
-{{--{!! Form::text('search', null,--}}
-                       {{--array('required',--}}
-                            {{--'class'=>'form-control',--}}
-                            {{--'placeholder'=>'Search for a tutorial...')) !!}--}}
-{{--{!! Form::submit('Search',--}}
-                           {{--array('class'=>'btn btn-default')) !!}--}}
-{{--{!! Form::close() !!}--}}
-
-
-
     @if(!isset($query))
 
         <?php $query = ''; ?>
 
         @endif
 
-    {!! Form::open(['method'=>'get', 'action' => 'UserController@search_user']) !!}
+    {!! Form::open(['method'=>'get', 'action' => 'UserController@index']) !!}
 
         <div class="form-group">
             {!! Form::label('search', 'Search user:') !!}
@@ -69,10 +58,10 @@
         </tbody>
     </table>
 
-    {{--<div class="row">--}}
-        {{--<div class="col-sm-6 col-sm-offset-5">--}}
-            {{--{{$users->render()}}--}}
-        {{--</div>--}}
-    {{--</div>--}}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$users->render()}}
+        </div>
+    </div>
 
     @endsection

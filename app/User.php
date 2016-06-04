@@ -21,7 +21,8 @@ class User extends Authenticatable implements SluggableInterface
         'display_name',
         'email',
         'password',
-        'terms'
+        'terms',
+        'role_id'
     ];
 
 
@@ -52,5 +53,10 @@ class User extends Authenticatable implements SluggableInterface
     public function follows()
     {
         return $this->hasMany('App\Follow');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
     }
 }

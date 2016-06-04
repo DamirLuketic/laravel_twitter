@@ -74,13 +74,13 @@
         </ul>
 
 
-        @if(Auth::check())
+        @if(Auth::check() && Auth::user()->terms == 1)
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
 
-                    <li> <a href="{{route('users.index')}}">All Users</a> </li>
+                    <li> <a href="{{route('users.index')}}">All Users</a></li>
 
                     <li>
                         <a href="{{route('posts.create')}}"><i class="fa fa-wrench fa-fw"></i> Create post</a>
@@ -103,6 +103,30 @@
 
                 </ul>
 
+                <br />
+                    {{-- Admin part --}}
+
+                @if(Auth::user()->role->name == 'Administrator' )
+
+                <ul class="nav" id="side-menu">
+
+                    <li> <a href="{{route('posts.index')}}">Admin</a></li>
+
+
+
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('admin.posts.index')}}">Edit & Approve Post</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('admin.users.index')}}">Edit User data</a>
+                        </li>
+
+                    </ul>
+                </ul>
+
+                    @endif
 
             </div>
             <!-- /.sidebar-collapse -->

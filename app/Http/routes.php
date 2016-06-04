@@ -50,5 +50,8 @@ Route::get('/search_user', ['as' => 'search_user', 'uses' => 'UserController@sea
 
 });
 
+Route::resource('/admin/users', 'AdminUserController');
+
+Route::resource('/admin/posts', 'AdminPostController');
 
 
