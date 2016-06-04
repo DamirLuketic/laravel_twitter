@@ -2,8 +2,11 @@ Simple APP like Twitter, created with Laravel Framework.
 
 With Laravel basic code use also packets:
 
+
 ->  laravelcollective/html
+
 -> cviebrock/eloquent-sluggable
+
 -> guzzlehttp/guzzle
 
 The app uses some external CSS and JS, and all is compiling with gulp (elixir).
