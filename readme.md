@@ -10,6 +10,7 @@ With Laravel basic code use also packets:
 -> guzzlehttp/guzzle
 
 The app uses some external CSS and JS, and all is compiling with gulp (elixir).
+
 In app is also install node js, for compiling CSS & JS.
 
 The app uses two types of layouts, and all view is made with "blade".
