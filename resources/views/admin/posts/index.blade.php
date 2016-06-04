@@ -5,24 +5,11 @@
 @section('content')
 
 
-    @if(Session::has('post_create'))
+    @if(Session::has('post_deleted'))
 
-        <p class="bg-danger">{{session('post_create')}}</p>
-
-    @endif
-
-    @if(session('account_deleted'))
-
-        <p class="bg-danger">{{session('account_deleted')}}</p>
+        <p class="bg-danger">{{session('post_deleted')}}</p>
 
     @endif
-
-    @if(session('mail_send'))
-
-        <p class="bg-danger">{{session('mail_send')}}</p>
-
-    @endif
-
 
     <h1>Posts</h1>
 
@@ -50,7 +37,8 @@
                     <td>{{str_limit($post->text, 7)}}</td>
                     <td>{{$post->created_at ? $post->created_at->diffForHumans() : 'Unavailable'}}</td>
                     <td>{{$post->updated_at ? $post->updated_at->diffForHumans() : 'Unavailable'}}</td>
-                    <td><a href="{{route('posts.show', $post->id)}}">View post</a></td>
+                    <td>{{$post->approved == 1 ? 'Approved' : 'Not approved'}}</td>
+                    <td><a href="{{route('admin.posts.edit', $post->id)}}">Edit post</a></td>
                 </tr>
 
             @endforeach

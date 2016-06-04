@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(7);
+        $posts = Post::where('approved', 1)->orderBy('created_at', 'desc')->paginate(7);
 
         return view('posts.index', compact('posts'));
     }

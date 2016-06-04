@@ -10,6 +10,7 @@ class Post extends Model
         [
             'user_id',
             'text',
+            'approved'
         ];
 
     protected function user()

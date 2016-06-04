@@ -34,6 +34,7 @@
                     <td>{{$post->created_at ? $post->created_at->diffForHumans() : 'Unavailable'}}</td>
                     <td>{{$post->updated_at ? $post->updated_at->diffForHumans() : 'Unavailable'}}</td>
                     <td><a href="{{route('posts.show', $post->id)}}">View post</a></td>
+                    <td>{{$post->approved == 1 ? 'Approved' : 'Not approved'}}</td>
                     <td><a href="{{route('posts.edit', $post->id)}}">Edit post</a></td>
                 </tr>
 

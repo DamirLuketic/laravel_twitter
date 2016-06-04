@@ -243,7 +243,7 @@ class UserController extends Controller
             $user_follows_id[] = $id->follow_id;
         }
 
-         $posts = Post::whereIn('user_id', $user_follows_id)->paginate(7);
+         $posts = Post::whereIn('user_id', $user_follows_id)->where('approved', 1)->paginate(7);
 
         return view('users.follows_posts', compact('posts'));
     }
